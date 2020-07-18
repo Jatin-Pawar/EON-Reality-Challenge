@@ -89,7 +89,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835144718804175254}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -107,13 +107,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyColor:
-  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 0.56620824, g: 1, b: 0, a: 1}
   - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 1, g: 0.9176471, b: 0, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  - {r: 1, g: 0, b: 1, a: 1}
-  - {r: 0.6261816, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0.38202363, b: 0, a: 1}
-  - {r: 0.3018868, g: 0.21053265, b: 0.027055884, a: 1}
+  - {r: 0.01966893, g: 0.3207547, b: 0.01966893, a: 1}
+  - {r: 0, g: 1, b: 0.8358209, a: 1}
+  - {r: 0.6226415, g: 0, b: 0.6226415, a: 1}
+  - {r: 0, g: 1, b: 0.53688645, a: 1}
+  - {r: 1, g: 0.5744222, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0.39124346, a: 1}
+  changeColorTime: 2

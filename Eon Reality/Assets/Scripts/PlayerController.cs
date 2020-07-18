@@ -2,14 +2,19 @@
 
 public class PlayerController : MonoBehaviour
 {
+    #region Exposed Variables
+    [SerializeField]
+    private SceneController sceneController;
+
     [SerializeField]
     private float moveSpeed = 10.0f;
 
     [SerializeField]
     private float rotationSpeed = 10.0f;
 
-    [SerializeField]
-    private SceneController sceneController;
+    #endregion
+
+    #region Non-Exposed Variables
 
     Rigidbody playerRB;
 
@@ -22,7 +27,9 @@ public class PlayerController : MonoBehaviour
     Vector3 moveVelocity = Vector3.zero;
 
     Vector3 originalPlayerPosition = Vector3.zero;
-    
+
+    #endregion
+
     void Start()
     {
         playerRB = transform.GetComponent<Rigidbody>();
@@ -52,17 +59,29 @@ public class PlayerController : MonoBehaviour
         //Adding form to move
         playerRB.AddRelativeForce(moveVelocity);
 
+        groundPlayer();
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    // Performs action when triggerEntered
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.transform.tag.ToLower() == "enemy")
+        if (other.transform.tag.ToLower() == "enemy")
         {
             sceneController.UpdateScore();
-            sceneController.UpdateEnemyCount();
-            transform.GetComponent<MeshRenderer>().material.color = collision.transform.GetComponent<MeshRenderer>().material.color;
+            sceneController.onEnemyDied(other.transform);
+            transform.GetComponent<MeshRenderer>().material.color = other.transform.GetComponent<MeshRenderer>().material.color;
 
+        }
+
+    }
+
+    // Keeps the player grounded
+    void groundPlayer()
+    {
+        if(transform.localEulerAngles.x != 0 || transform.localEulerAngles.z != 0)
+        {
+            transform.localEulerAngles = new Vector3(0.0f,transform.localEulerAngles.y,0.0f);
         }
     }
 }
